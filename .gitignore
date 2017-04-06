@@ -1,2 +1,6 @@
 /node_modules
 *.txt
+*.module.js
+*.component.js
+*.controller.js
+*.tpl.html
