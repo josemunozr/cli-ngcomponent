@@ -6,6 +6,9 @@
   "scripts": {
     "build": "babel ./app/app.js -o ./index.js"
   },
+  "bin": {
+    "ngcomponent": "index.js"
+  },
   "keywords": [
     "cli",
     "ngcomponent",
