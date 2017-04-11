@@ -1,7 +1,7 @@
 {
   "name": "cli-ngcomponent",
-  "version": "1.0.1",
-  "description": "CLI (Command Line Interface) to create component for angularjs1.5+",
+  "version": "1.0.2",
+  "description": "CLI (Command Line Interface) to create component files for angularjs1.5+",
   "main": "index.js",
   "scripts": {
     "build": "babel ./app/app.js -o ./index.js "
@@ -14,7 +14,12 @@
     "ngcomponent",
     "component"
   ],
-  "author": "José Muñoz Ruiz",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josemunozr/cli-ngcomponent"
+  },
+  "author": "José Muñoz Ruiz <jozeepp@gmail.com>",
+  "homepage": "https://github.com/josemunozr/cli-ngcomponent#readme",
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.24.0",

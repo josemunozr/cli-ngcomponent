@@ -1,6 +1,6 @@
 # CLI-NgComponent
 
-CLI (Command Line Interface) to create component for angularjs1.5+
+CLI (Command Line Interface) to create component files for angularjs1.5+
 
 ## Install
 ```javascript
