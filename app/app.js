@@ -19,12 +19,8 @@ console.log('creating component...')
 createComponent('module', 'component', 'controller')
 
 function createComponent(...params) {
-  let nameFile
-  let tpl
   params.map(function(item, i) {
-    nameFile = `${argument.c}.${item}`
-    tpl = getTamplate(item, argument.c)
-    fs.writeFile(`${nameFile}.js`, tpl , (err) => {
+    fs.writeFile(`${argument.c}.${item}.js`, getTamplate(item, argument.c) , (err) => {
       if (err) throw err
     })
   })

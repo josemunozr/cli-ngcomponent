@@ -28,17 +28,12 @@ console.log('creating component...');
 createComponent('module', 'component', 'controller');
 
 function createComponent() {
-  var nameFile = void 0;
-  var tpl = void 0;
-
   for (var _len = arguments.length, params = Array(_len), _key = 0; _key < _len; _key++) {
     params[_key] = arguments[_key];
   }
 
   params.map(function (item, i) {
-    nameFile = argument.c + '.' + item;
-    tpl = getTamplate(item, argument.c);
-    _fs2.default.writeFile(nameFile + '.js', tpl, function (err) {
+    _fs2.default.writeFile(argument.c + '.' + item + '.js', getTamplate(item, argument.c), function (err) {
       if (err) throw err;
     });
   });
