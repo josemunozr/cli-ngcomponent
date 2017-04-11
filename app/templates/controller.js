@@ -1,14 +1,18 @@
-(function (angular) {
+exports.controllerTemplate =  (name) => {
+  return `
+((function (angular) {
   'use strict'
 
   angular
-    .module('module')
-    .controller('component', component)
+    .module('${name}')
+    .controller('${name}Controller', ${name}Controller)
 
-    component.$inject = []
+    ${name}Controller.$inject = []
 
-    function component() {
+    function ${name}Controller() {
       var vm = this
     }
 
 })(window.angular);
+`
+}

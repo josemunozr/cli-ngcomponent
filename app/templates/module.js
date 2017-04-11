@@ -1,7 +1,11 @@
+exports.moduleTemplate =  (name) => {
+  return `
 (function (angular) {
   'use strict'
 
   angular
-    .module('module', [])
+    .module('${name}', [])
 
-})(window.angular);
+})(window.angular)
+`
+}

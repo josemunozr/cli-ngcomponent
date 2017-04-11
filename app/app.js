@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 import argv from 'optimist'
 import fs from 'fs'
+import {moduleTemplate} from './app/templates/module'
+import {controllerTemplate} from './app/templates/controller'
+import {componentTemplate} from './app/templates/component'
 
 const argument = argv
                   .usage('Usage: ngcomponent -c [nameComponet] -dir')
@@ -12,18 +15,33 @@ console.log('creating component...')
 // if(argument.dir){
 //   //create directory
 // }
+
 createComponent('module', 'component', 'controller')
 
 function createComponent(...params) {
   let nameFile
-  params.map(function(item, i) {s
+  let tpl
+  params.map(function(item, i) {
     nameFile = `${argument.c}.${item}`
-    fs.writeFile(`${nameFile}.js`, 'componentJS', (err) => {
+    tpl = getTamplate(item, argument.c)
+    fs.writeFile(`${nameFile}.js`, tpl , (err) => {
       if (err) throw err
     })
   })
 
-//   fs.writeFile(`${argument.c}.tpl.html`, `<h1>Component ${argument.c}</h1>`, (err) => {
-//     if (err) throw err
-//   })
-// }
+  fs.writeFile(`${argument.c}.tpl.html`, `<h1>Component ${argument.c}</h1>`, (err) => {
+    if (err) throw err
+  })
+}
+
+function getTamplate(item, arg) {
+  if (item == 'module')
+    return moduleTemplate(arg)
+
+  if (item == 'component')
+    return componentTemplate(arg)
+
+  if (item == 'controller')
+    return controllerTemplate(arg)
+
+}

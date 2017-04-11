@@ -1,11 +1,16 @@
+exports.componentTemplate =  (name) => {
+  return `
 (function (angular) {
   'use strict'
+
   var component = {
     templateUrl: ''
   }
 
   angular
-    .module('module')
-    .component('component', component)
-    
+    .module('${name}')
+    .component('${name}', ${name})
+
 })(window.angular);
+`
+}
