@@ -4,7 +4,8 @@ exports.componentTemplate =  (name) => {
   'use strict'
 
   var ${name} = {
-    templateUrl: './${name}.tpl.html'
+    templateUrl: './${name}.tpl.html',
+    controller: '${name}Controller'
   }
 
   angular

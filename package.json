@@ -1,7 +1,7 @@
 {
   "name": "cli-ngcomponent",
-  "version": "0.0.1",
-  "description": "CLI (Command Line Interface to create component for angularjs1.5",
+  "version": "1.0.0",
+  "description": "CLI (Command Line Interface) to create component for angularjs1.5",
   "main": "index.js",
   "scripts": {
     "build": "babel ./app/app.js -o ./index.js "
