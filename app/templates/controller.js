@@ -1,6 +1,5 @@
 exports.controllerTemplate =  (name) => {
-  return `
-((function (angular) {
+  return `(function (angular) {
   'use strict'
 
   angular
@@ -13,6 +12,6 @@ exports.controllerTemplate =  (name) => {
       var vm = this
     }
 
-})(window.angular);
+})(window.angular)
 `
 }

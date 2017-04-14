@@ -1,32 +1,36 @@
 #!/usr/bin/env node
 import argv from 'optimist'
+import shell from 'shelljs'
 import fs from 'fs'
 import {moduleTemplate} from './app/templates/module'
 import {controllerTemplate} from './app/templates/controller'
 import {componentTemplate} from './app/templates/component'
 
 const argument = argv
-                  .usage('Usage: ngcomponent -c [nameComponet] -dir')
+                  .usage('Usage: ngcomponent -c [nameComponet] --dir')
                   .demand(['c'])
                   .argv
 
 console.log('creating component...')
 
-// if(argument.dir){
-//   //create directory
-// }
+if(argument.dir){
+  createDir(argument.c)
+}
 
-createComponent('module', 'component', 'controller')
+createComponents('module.js', 'component.js', 'controller.js', 'tpl.html')
 
-function createComponent(...params) {
-  params.map(function(item, i) {
-    fs.writeFile(`${argument.c}.${item}.js`, getTamplate(item, argument.c) , (err) => {
-      if (err) throw err
-    })
-  })
+function createComponents(...params) {
+  params.map((item, i) => {
+    let file = ''
 
-  fs.writeFile(`${argument.c}.tpl.html`, `<h1>Component ${argument.c}</h1>`, (err) => {
-    if (err) throw err
+    file = `${argument.c}.${item}`
+
+    if(argument.dir) {
+      file = `${argument.c}/${file}`
+    }
+
+    crearFile(file, getTamplate(item, argument.c))
+
   })
 }
 
@@ -40,4 +44,14 @@ function getTamplate(item, arg) {
   if (item == 'controller')
     return controllerTemplate(arg)
 
+}
+
+function createDir(nameDir) {
+  shell.mkdir('-p',nameDir)
+}
+
+function crearFile(nameFile, templateFile) {
+  fs.writeFile(nameFile, templateFile, (err) => {
+    if (err) throw err
+  })
 }

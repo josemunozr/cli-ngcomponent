@@ -1,6 +1,5 @@
 exports.moduleTemplate =  (name) => {
-  return `
-(function (angular) {
+  return `(function (angular) {
   'use strict'
 
   angular
