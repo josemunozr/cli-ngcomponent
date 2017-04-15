@@ -5,8 +5,12 @@ exports.componentTemplate =  (name) => {
   angular
     .module('${name}')
     .component('${name}', {
-      templateUrl: './${name}.tpl.html',
-      controller: '${name}Controller'
+      templateUrl : './${name}.tpl.html',
+      controller : '${name}Controller',
+      controllerAs : '$ctrl',
+      bindings : {
+
+      }
     })
 
 })(window.angular)

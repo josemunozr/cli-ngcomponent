@@ -45,6 +45,25 @@ CLI (Command Line Interface) to create component files for angularjs1.5+
 })(window.angular)
 ```
 
+### 'test.component.js'
+```javascript
+(function (angular) {
+'use strict'
+
+angular
+  .module('${name}')
+  .component('${name}', {
+    templateUrl : './${name}.tpl.html',
+    controller : '${name}Controller',
+    controllerAs : '$ctrl',
+    bindings : {
+
+    }
+  })
+
+})(window.angular)
+```
+
 #### 'test.tpl.html'
 ```javascript
 <h1>Component test</h1>

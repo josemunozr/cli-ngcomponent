@@ -6,30 +6,35 @@ import {moduleTemplate} from './app/templates/module'
 import {controllerTemplate} from './app/templates/controller'
 import {componentTemplate} from './app/templates/component'
 
-const argument = argv
-                  .usage('Usage: ngcomponent -c [nameComponet] --dir')
-                  .demand(['c'])
-                  .argv
+const args = argv
+              .usage('Create files necessary for a component\nUsage : ngcomponent [-c|-d|--help]')
+              .default('c', 'test')
+              .alias('c', 'create')
+              .alias('d', 'dir')
+              .describe('c', 'Create files')
+              .describe('d', 'Create a directory')
+              .describe('help', 'Get help to use CLI')
+              .argv
 
-console.log('creating component...')
-
-if(argument.dir){
-  createDir(argument.c)
+if (args.help) {
+  console.log(argv.help())
+}else{
+  if (args.d){ createDir(args.c) }
+  createFiles('module.js', 'component.js', 'controller.js', 'tpl.html')
 }
 
-createComponents('module.js', 'component.js', 'controller.js', 'tpl.html')
 
-function createComponents(...params) {
+function createFiles(...params) {
   params.map((item, i) => {
     let file = ''
 
-    file = `${argument.c}.${item}`
+    file = `${args.c}.${item}`
 
-    if(argument.dir) {
-      file = `${argument.c}/${file}`
+    if(args.dir) {
+      file = `${args.c}/${file}`
     }
 
-    crearFile(file, getTamplate(item, argument.c))
+    crearFile(file, getTamplate(item, args.c))
 
   })
 }
@@ -51,6 +56,7 @@ function createDir(nameDir) {
 }
 
 function crearFile(nameFile, templateFile) {
+  console.log(`creating ${nameFile} file...`)
   fs.writeFile(nameFile, templateFile, (err) => {
     if (err) throw err
   })

@@ -21,17 +21,20 @@ var _component = require('./app/templates/component');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var argument = _optimist2.default.usage('Usage: ngcomponent -c [nameComponet] --dir').demand(['c']).argv;
+var args = _optimist2.default.usage('Create files necessary for a component\nUsage : ngcomponent [-c|-d|--help]').default('c', 'test').alias('c', 'create').alias('d', 'dir')
+// .alias('h', 'help')
+.describe('c', 'Create files').describe('d', 'Create a directory').describe('help', 'Get help to use CLI').argv;
 
-console.log('creating component...');
-
-if (argument.dir) {
-  createDir(argument.c);
+if (args.help) {
+  console.log(_optimist2.default.help());
+} else {
+  if (args.d) {
+    createDir(args.c);
+  }
+  createFiles('module.js', 'component.js', 'controller.js', 'tpl.html');
 }
 
-createComponents('module.js', 'component.js', 'controller.js', 'tpl.html');
-
-function createComponents() {
+function createFiles() {
   for (var _len = arguments.length, params = Array(_len), _key = 0; _key < _len; _key++) {
     params[_key] = arguments[_key];
   }
@@ -39,13 +42,13 @@ function createComponents() {
   params.map(function (item, i) {
     var file = '';
 
-    file = argument.c + '.' + item;
+    file = args.c + '.' + item;
 
-    if (argument.dir) {
-      file = argument.c + '/' + file;
+    if (args.dir) {
+      file = args.c + '/' + file;
     }
 
-    crearFile(file, getTamplate(item, argument.c));
+    crearFile(file, getTamplate(item, args.c));
   });
 }
 
@@ -62,6 +65,7 @@ function createDir(nameDir) {
 }
 
 function crearFile(nameFile, templateFile) {
+  console.log('creating ' + nameFile + ' file...');
   _fs2.default.writeFile(nameFile, templateFile, function (err) {
     if (err) throw err;
   });
