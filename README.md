@@ -15,7 +15,26 @@ CLI (Command Line Interface) to create component files for angularjs1.5+
   //nameComponent.controller.js
   //nameComponent.component.js
   //nameComponent.tpl.html
+
+  ngcomponent -c nameComponent --dir
+  //creates:
+  //nameComponent/nameComponent.module.js
+  //nameComponent/nameComponent.controller.js
+  //nameComponent/nameComponent.component.js
+  //nameComponent/nameComponent.tpl.html
+
 ```
+#### ngcomponent --help
+```javascript
+Create files necessary for a component
+Usage : ngcomponent [-c|-d|--help]
+
+Options:
+  -c, --create  Create files         [default: "test"]
+  -d, --dir     Create a directory
+  --help        Get help to use CLI
+```
+
 ### Result
 
 #### 'test.module.js'
