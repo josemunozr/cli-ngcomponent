@@ -70,14 +70,12 @@ Options:
 'use strict'
 
 angular
-  .module('${name}')
-  .component('${name}', {
-    templateUrl : './${name}.tpl.html',
-    controller : '${name}Controller',
+  .module('test')
+  .component('test', {
+    templateUrl : './test.tpl.html',
+    controller : 'testController',
     controllerAs : '$ctrl',
-    bindings : {
-
-    }
+    bindings : {}
   })
 
 })(window.angular)
