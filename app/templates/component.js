@@ -8,9 +8,7 @@ exports.componentTemplate =  (name) => {
       templateUrl : './${name}.tpl.html',
       controller : '${name}Controller',
       controllerAs : '$ctrl',
-      bindings : {
-
-      }
+      bindings : {}
     })
 
 })(window.angular)

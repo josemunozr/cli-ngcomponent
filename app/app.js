@@ -2,6 +2,7 @@
 import argv from 'optimist'
 import shell from 'shelljs'
 import fs from 'fs'
+import camelcase from 'lodash.camelcase'
 import {moduleTemplate} from './app/templates/module'
 import {controllerTemplate} from './app/templates/controller'
 import {componentTemplate} from './app/templates/component'
@@ -31,28 +32,30 @@ function createFiles(...params) {
     file = `${args.c}.${item}`
 
     if(args.dir) {
-      file = `${args.c}/${file}`
+      file = `${args.c.toLowerCase()}/${file}`
     }
-
-    crearFile(file, getTamplate(item, args.c))
+    crearFile(file.toLowerCase(), getTamplate(item, args.c))
 
   })
 }
 
 function getTamplate(item, arg) {
-  if (item == 'module')
-    return moduleTemplate(arg)
+  if (item == 'module.js')
+    return moduleTemplate(camelcase(arg))
 
-  if (item == 'component')
-    return componentTemplate(arg)
+  if (item == 'component.js')
+    return componentTemplate(camelcase(arg))
 
-  if (item == 'controller')
-    return controllerTemplate(arg)
+  if (item == 'controller.js')
+    return controllerTemplate(camelcase(arg))
+
+  if (item == 'tpl.html')
+    return `<h1>Component ${camelcase(arg)}</h1>`
 
 }
 
 function createDir(nameDir) {
-  shell.mkdir('-p',nameDir)
+  shell.mkdir('-p', nameDir.toLowerCase())
 }
 
 function crearFile(nameFile, templateFile) {

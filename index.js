@@ -13,6 +13,10 @@ var _fs = require('fs');
 
 var _fs2 = _interopRequireDefault(_fs);
 
+var _lodash = require('lodash.camelcase');
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
 var _module = require('./app/templates/module');
 
 var _controller = require('./app/templates/controller');
@@ -21,9 +25,7 @@ var _component = require('./app/templates/component');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var args = _optimist2.default.usage('Create files necessary for a component\nUsage : ngcomponent [-c|-d|--help]').default('c', 'test').alias('c', 'create').alias('d', 'dir')
-// .alias('h', 'help')
-.describe('c', 'Create files').describe('d', 'Create a directory').describe('help', 'Get help to use CLI').argv;
+var args = _optimist2.default.usage('Create files necessary for a component\nUsage : ngcomponent [-c|-d|--help]').default('c', 'test').alias('c', 'create').alias('d', 'dir').describe('c', 'Create files').describe('d', 'Create a directory').describe('help', 'Get help to use CLI').argv;
 
 if (args.help) {
   console.log(_optimist2.default.help());
@@ -45,23 +47,24 @@ function createFiles() {
     file = args.c + '.' + item;
 
     if (args.dir) {
-      file = args.c + '/' + file;
+      file = args.c.toLowerCase() + '/' + file;
     }
-
-    crearFile(file, getTamplate(item, args.c));
+    crearFile(file.toLowerCase(), getTamplate(item, args.c));
   });
 }
 
 function getTamplate(item, arg) {
-  if (item == 'module') return (0, _module.moduleTemplate)(arg);
+  if (item == 'module.js') return (0, _module.moduleTemplate)((0, _lodash2.default)(arg));
 
-  if (item == 'component') return (0, _component.componentTemplate)(arg);
+  if (item == 'component.js') return (0, _component.componentTemplate)((0, _lodash2.default)(arg));
 
-  if (item == 'controller') return (0, _controller.controllerTemplate)(arg);
+  if (item == 'controller.js') return (0, _controller.controllerTemplate)((0, _lodash2.default)(arg));
+
+  if (item == 'tpl.html') return '<h1>Component ' + (0, _lodash2.default)(arg) + '</h1>';
 }
 
 function createDir(nameDir) {
-  _shelljs2.default.mkdir('-p', nameDir);
+  _shelljs2.default.mkdir('-p', nameDir.toLowerCase());
 }
 
 function crearFile(nameFile, templateFile) {
