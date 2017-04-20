@@ -17,11 +17,11 @@ var _lodash = require('lodash.camelcase');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _module = require('./app/templates/module');
+var _module = require('./templates/module');
 
-var _controller = require('./app/templates/controller');
+var _controller = require('./templates/controller');
 
-var _component = require('./app/templates/component');
+var _component = require('./templates/component');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

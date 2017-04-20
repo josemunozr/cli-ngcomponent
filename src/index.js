@@ -3,9 +3,9 @@ import argv from 'optimist'
 import shell from 'shelljs'
 import fs from 'fs'
 import camelcase from 'lodash.camelcase'
-import {moduleTemplate} from './app/templates/module'
-import {controllerTemplate} from './app/templates/controller'
-import {componentTemplate} from './app/templates/component'
+import {moduleTemplate} from './templates/module'
+import {controllerTemplate} from './templates/controller'
+import {componentTemplate} from './templates/component'
 
 const args = argv
               .usage('Create files necessary for a component\nUsage : ngcomponent [-c|-d|--help]')
