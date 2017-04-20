@@ -26,14 +26,21 @@ var _component = require('./templates/component');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var args = _optimist2.default.usage('Create files necessary for a component\nUsage : ngcomponent [-c|-d|--help]').default('c', 'test').alias('c', 'create').alias('d', 'dir').describe('c', 'Create files').describe('d', 'Create a directory').describe('help', 'Get help to use CLI').argv;
-
-if (args.help) {
-  console.log(_optimist2.default.help());
-} else {
-  if (args.d) {
-    createDir(args.c);
+try {
+  if (args._.length == 0) {
+    if (args.help) {
+      console.log(_optimist2.default.help());
+    } else {
+      if (args.d) {
+        createDir(args.c);
+      }
+      createFiles('module.js', 'component.js', 'controller.js', 'tpl.html');
+    }
+  } else {
+    throw new Error('Add necessary params');
   }
-  createFiles('module.js', 'component.js', 'controller.js', 'tpl.html');
+} catch (e) {
+  console.error(e.name + ' : ' + e.message);
 }
 
 function createFiles() {
