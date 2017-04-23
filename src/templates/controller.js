@@ -10,6 +10,9 @@ exports.controllerTemplate =  (name) => {
 
     function ${name}Controller() {
       var vm = this
+      vm.$onInit = _onInit
+
+      function _onInit () { }
     }
 
 })(window.angular)
