@@ -60,6 +60,9 @@ Options:
 
     function testController() {
       var vm = this
+      vm.$onInit = _onInit
+
+      function _onInit () { }
     }
 })(window.angular)
 ```
