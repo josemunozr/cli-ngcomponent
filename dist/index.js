@@ -26,24 +26,24 @@ var _component = require('./templates/component');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var args = _optimist2.default.usage('Create files necessary for a component\nUsage : ngcomponent [-c|-d|--help]').default('c', 'test').alias('c', 'create').alias('d', 'dir').describe('c', 'Create files').describe('d', 'Create a directory').describe('help', 'Get help to use CLI').argv;
-try {
-  if (args._.length == 0) {
-    if (args.help) {
-      console.log(_optimist2.default.help());
-    } else {
-      if (args.d) {
-        createDir(args.c);
-      }
-      createFiles('module.js', 'component.js', 'controller.js', 'tpl.html');
-    }
-  } else {
-    throw new Error('Add necessary params');
+
+if (args._.length == 0) {
+  if (args.c == true) {
+    args.c = 'test';
   }
-} catch (e) {
-  console.error(e.name + ' : ' + e.message);
+
+  if (args.help) {
+    console.log(_optimist2.default.help());
+  } else {
+    createFiles('module.js', 'component.js', 'controller.js', 'tpl.html');
+  }
+} else {
+  console.log(new Error('Add necessary params'));
 }
 
 function createFiles() {
+  if (args.d) createDir(args.c);
+
   for (var _len = arguments.length, params = Array(_len), _key = 0; _key < _len; _key++) {
     params[_key] = arguments[_key];
   }

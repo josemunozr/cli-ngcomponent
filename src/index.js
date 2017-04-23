@@ -16,24 +16,24 @@ const args = argv
               .describe('d', 'Create a directory')
               .describe('help', 'Get help to use CLI')
               .argv
-try {
+
   if(args._.length == 0){
+    if (args.c == true) { args.c = 'test' }
+
     if (args.help) {
       console.log(argv.help())
     }else{
-      if (args.d){ createDir(args.c) }
       createFiles('module.js', 'component.js', 'controller.js', 'tpl.html')
     }
   }else{
-    throw new Error('Add necessary params')
+    console.log(new Error('Add necessary params'))
   }
-
-} catch (e) {
-  console.error(`${e.name} : ${e.message}`)
-}
 
 
 function createFiles(...params) {
+  if (args.d)
+    createDir(args.c)
+
   params.map((item, i) => {
     let file = ''
 
