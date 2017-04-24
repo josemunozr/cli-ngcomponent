@@ -1,9 +1,9 @@
 import shell from 'shelljs'
 import fs from 'fs'
 import camelcase from 'lodash.camelcase'
-import {moduleTemplate} from '../templates/module'
-import {controllerTemplate} from '../templates/controller'
-import {componentTemplate} from '../templates/component'
+import moduleTemplate from '../templates/module'
+import controllerTemplate from '../templates/controller'
+import componentTemplate from '../templates/component'
 
 const _createDir = (nameDir) => {
   shell.mkdir('-p', nameDir.toLowerCase())

@@ -1,4 +1,4 @@
-exports.componentTemplate =  (name) => {
+const componentTemplate =  (name) => {
   return `(function (angular) {
   'use strict'
 
@@ -14,3 +14,5 @@ exports.componentTemplate =  (name) => {
 })(window.angular)
 `
 }
+
+export default componentTemplate

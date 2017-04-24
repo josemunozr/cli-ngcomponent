@@ -18,9 +18,15 @@ var _lodash2 = _interopRequireDefault(_lodash);
 
 var _module = require('../templates/module');
 
+var _module2 = _interopRequireDefault(_module);
+
 var _controller = require('../templates/controller');
 
+var _controller2 = _interopRequireDefault(_controller);
+
 var _component = require('../templates/component');
+
+var _component2 = _interopRequireDefault(_component);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36,11 +42,11 @@ var _crearFile = function _crearFile(nameFile, templateFile) {
 };
 
 var _getTamplate = function _getTamplate(item, arg) {
-  if (item == 'module.js') return (0, _module.moduleTemplate)((0, _lodash2.default)(arg));
+  if (item == 'module.js') return (0, _module2.default)((0, _lodash2.default)(arg));
 
-  if (item == 'component.js') return (0, _component.componentTemplate)((0, _lodash2.default)(arg));
+  if (item == 'component.js') return (0, _component2.default)((0, _lodash2.default)(arg));
 
-  if (item == 'controller.js') return (0, _controller.controllerTemplate)((0, _lodash2.default)(arg));
+  if (item == 'controller.js') return (0, _controller2.default)((0, _lodash2.default)(arg));
 
   if (item == 'tpl.html') return '<h1>Component ' + (0, _lodash2.default)(arg) + '</h1>';
 };

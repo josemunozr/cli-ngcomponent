@@ -1,4 +1,4 @@
-exports.controllerTemplate =  (name) => {
+const controllerTemplate =  (name) => {
   return `(function (angular) {
   'use strict'
 
@@ -18,3 +18,5 @@ exports.controllerTemplate =  (name) => {
 })(window.angular)
 `
 }
+
+export default controllerTemplate
